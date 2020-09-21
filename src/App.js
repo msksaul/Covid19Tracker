@@ -77,11 +77,6 @@ function App() {
               {countries.map(country => (
                 <MenuItem value={country.name}>{country.name}</MenuItem>
               ))}
-              {/* loop trough all the countries */}
-              {/* <MenuItem value='worldwide'>Worldwide</MenuItem>
-              <MenuItem value='worldwide'>Worldwide1</MenuItem>
-              <MenuItem value='worldwide'>Worldwide2</MenuItem>
-              <MenuItem value='worldwide'>Worldwide3</MenuItem> */}
             </Select>
           </FormControl>
         </div>
