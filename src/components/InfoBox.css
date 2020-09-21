@@ -8,15 +8,23 @@
 }
 
 .infoBox--selected {
-  border-top: 10px solid greenyellow;
+  border-top: 10px solid #7dd71d;
 }
 
 .infoBox__cases--green {
-  color: lightgreen !important;
+  color: #7dd71d !important;
+}
+
+.infoBox__cases--orange {
+  color: #fb4443 !important;
 }
 
 .infoBox--red {
-  border-color: red;
+  border-color:#CC1034;
+}
+
+.infoBox--orange {
+  border-color:#fb4443;
 }
 
 .infoBox__cases {
