@@ -50,7 +50,7 @@ const buildChartData = (data, casesType) => {
   let chartData = []
   let lastDataPoint
 
-  for (let date in data.cases) {
+  for (let date in data?.cases) {
     if (lastDataPoint) {
       let newDataPoint = {
         x: date,
@@ -63,24 +63,28 @@ const buildChartData = (data, casesType) => {
   return chartData
 }
 
-function LineGraph({ casesType='cases'}) {
+function LineGraph({ casesType='cases', country, ...props }) {
 
   const [data, setData] = useState({});
 
+  if(country === 'worldwide') {country = 'all'}
+
   useEffect(() => {
     const fetchData = async() => {
-      await fetch('https://disease.sh/v3/covid-19/historical/all?lastdays=120')
+      await fetch(`https://disease.sh/v3/covid-19/historical/${country}?lastdays=120`)
         .then(response => response.json())
         .then(data => {
-          let chartData = buildChartData(data, 'cases')
+          console.log(data)
+          let dataReady = country !== 'all' ? data.timeline : data
+          let chartData = buildChartData(dataReady, casesType)
           setData(chartData)
         })
     }
     fetchData()
-  }, [casesType])
+  }, [casesType, country])
 
   return (
-    <div>
+    <div className={props.className}>
       {data?.length > 0 && (
         <Line
         options={options}
